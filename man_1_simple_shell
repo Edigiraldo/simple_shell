@@ -1,0 +1,39 @@
+.\" Manpage for simple_shell.
+.TH SIMPLE_SHELL 3 "14 April 2020" "1.0" "simple_shell man page"
+.SH NAME
+simple_shell - format and print data
+.SH SYNOPSIS
+.B printf FORMAT [ARGUMENT]...
+.SH DESCRIPTION
+.B simple_shell is a function to do formatted printing. This function allows for printing numbers and other things stored in variables.
+.B simple_shell takes one argument:a string of characters to be printed. This string is composed of characters, each of which is printed exactly as it appears.
+.SH EXAMPLE
+The real power of printf is when we are printing the contents of variables. Let’s take the format specifier %d for example. This prints a number. So, a number must be provided for printing. This is done by adding another argument to the printf statement,
+as shown here.
+
+    simple_shell ( "I am %d years old\n", age );
+
+In this example, printf has two arguments. The first is a string: "I am %d years old\n". The second is an integer, age.
+
+.B The conversion specifiers
+
+.IP %c
+- print a single character.
+.IP %s
+- print a string of characters.
+.IP %%
+- prints percentage symbol.
+.IP %d
+- prints decimal.
+.IP %i
+- print an integer in base 10.
+
+.SH SEE ALSO
+.I printf (3)
+.SH BUGS
+No known bugs.
+.SH "AUTHORS"
+.SH ""
+
+Edison Giraldo Aristizabal and Sergio Steben Arias Quintero
+
