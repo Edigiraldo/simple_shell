@@ -9,7 +9,7 @@
  * @lineptr: command inserted for user.
  */
 
-void call_command(char *argv[], char **PATH_arr, char *lineptr)
+void call_command(char *av[], char *argv[], char **PATH_arr, char *lineptr, char **environ)
 {
 	pid_t cpid = 0;
 	int status = 0;
@@ -19,21 +19,22 @@ void call_command(char *argv[], char **PATH_arr, char *lineptr)
 	command_path = look_for_path(argv[0], PATH_arr);
 	if (command_path != NULL)
 	{
-		argv[0] = command_path;
 		free_command_path = 1;
 	}
+	else
+		command_path = argv[0];
 
 	cpid = fork();
 	if (cpid == 0)
 	{
-		execve(argv[0], argv, NULL);
+		execve(command_path, argv, environ);
 
 		free(lineptr);
-		if (free_command_path == 1)
-			free(argv[0]);
 		free(argv);
 		free(PATH_arr);
-		perror("./shell");   /* execve() only returns on error */
+		perror(av[0]);   /* execve() only returns on error */
+		if (free_command_path == 1)
+			free(command_path);
 		exit(EXIT_FAILURE);
 	}
 	else if (cpid == -1)
@@ -45,7 +46,7 @@ void call_command(char *argv[], char **PATH_arr, char *lineptr)
 	{
 		wait(&status);
 		if (free_command_path == 1)
-			free(argv[0]);
+			free(command_path);
 		free(argv);
 		/*free(PATH_arr);*/
 		free(lineptr);

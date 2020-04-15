@@ -11,8 +11,8 @@
 
 char *strings_concat(char *PATH, char *command)
 {
-	size_t PATH_len = strlen(PATH);
-	size_t command_len = strlen(command);
+	size_t PATH_len = _strlen(PATH);
+	size_t command_len = _strlen(command);
 	size_t dest_len = PATH_len + command_len;
 	size_t i;
 	char *concatened = NULL;

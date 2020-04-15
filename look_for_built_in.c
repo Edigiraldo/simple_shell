@@ -11,13 +11,15 @@
  * Return: 1 if a builtin command was found, else 0.
  */
 
-int look_for_built_in(char *lineptr, char **argv, char **PATH_arr)
+int look_for_built_in(char *lineptr, char **argv, char **PATH_arr,
+	 char **environ)
 {
 	int command = 0, letter = 0;
 
 	char *built_ins[] = {"exit", "env", NULL};
 
-	void (*func_ptr[])(char *, char **, char **) = {Exit, Env, NULL};
+	void (*func_ptr[])(char *, char **, char **, char **)
+	= {Exit, Env, NULL};
 
 	while (built_ins[command] != NULL)
 	{
@@ -30,7 +32,7 @@ int look_for_built_in(char *lineptr, char **argv, char **PATH_arr)
 		}
 		if (built_ins[command][letter] == '\0' && argv[0][letter] == '\0')
 		{
-			func_ptr[command](lineptr, argv, PATH_arr);
+			func_ptr[command](lineptr, argv, PATH_arr, environ);
 			return (1);
 		}
 		command++;

@@ -17,17 +17,17 @@ char **split_arguments(char *lineptr)
 
 	command = strtok(lineptr, "\n");
 
-	token = strtok(command, " ");
+	token = strtok(command, " \t");
 	/*if != NULL*/
 	argv = malloc(size_ptr * 2);
 	/*if malloc == -1*/
 	argv[0] = token;
-	token = strtok(NULL, " ");
+	token = strtok(NULL, " \t");
 	while (token != NULL)
 	{
-		argv = realloc(argv, (i + 1) * size_ptr);
+		argv = _realloc(argv, i * size_ptr, (i + 1) * size_ptr);
 		argv[i - 1] = token;
-		token = strtok(NULL, " ");
+		token = strtok(NULL, " \t");
 		i++;
 	}
 		argv[i - 1] = NULL;
