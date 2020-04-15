@@ -17,7 +17,7 @@ void Exit(char *lineptr, char **argv, char **PATH_arr, __attribute__((unused)) c
 		write(2, "-hsh: exit: too many arguments\n", _strlen("-hsh: exit: too many arguments\n"));
 		return;
 	}
-	free(PATH_arr);
+	free(PATH_arr[0] - 5), free(PATH_arr);
 	if (argv[1] != NULL)
 	{       num = _atoi(argv[1]);
 		if (num != 0)

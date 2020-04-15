@@ -1,10 +1,10 @@
 #include "Holberton.h"
 
-char *_getenv(const char *name)
+char *_getenv(const char *name, char **environ)
 {
-	extern char **environ;
 	char *envi = NULL;
 	int i = 0, j = 0;
+	char *find = NULL;
 
 	while (environ[i] != NULL)
 	{
@@ -20,7 +20,8 @@ char *_getenv(const char *name)
 
 		if ((environ[i][j] == '=') && (name[j] == '\0'))
 		{
-			strtok(environ[i], "=");
+			find = _strdup(environ[i]);
+			strtok(find, "=");
 			envi = strtok(NULL, "=");
 			return (envi);
 		}
