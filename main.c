@@ -14,12 +14,13 @@ int main(int ac, char *av[])
 	char *lineptr = NULL;
 	char **argv = NULL;
 	char **PATH_arr = NULL;
+	int status = 0;
 	size_t n = 0;
 	extern char **environ;
 	(void)ac;
 	(void)av;
 
-	PATH_arr = PATH_dirs();
+	PATH_arr = PATH_dirs(environ);
 	print_prompt();
 	while ((getline(&lineptr, &n, stdin)) > 0)
 	{
@@ -34,7 +35,7 @@ int main(int ac, char *av[])
 			print_prompt();
 			continue;
 		}
-		call_command(av, argv, PATH_arr, lineptr, environ);
+		call_command(av, argv, PATH_arr, lineptr, environ, &status);
 		lineptr = NULL;
 		n = 0;
 	}
@@ -43,7 +44,9 @@ int main(int ac, char *av[])
 		write(1, "\n", 1);
 	}
 	free(lineptr);
+	free(PATH_arr[0] - 5);
 	free(PATH_arr);
 
+	exit(status);
 	return (0);
 }

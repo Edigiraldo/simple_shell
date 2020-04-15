@@ -9,10 +9,9 @@
  * @lineptr: command inserted for user.
  */
 
-void call_command(char *av[], char *argv[], char **PATH_arr, char *lineptr, char **environ)
+void call_command(char *av[], char *argv[], char **PATH_arr, char *lineptr, char **environ, int *status)
 {
 	pid_t cpid = 0;
-	int status = 0;
 	char *command_path = NULL;
 	int free_command_path = 0;
 
@@ -28,11 +27,12 @@ void call_command(char *av[], char *argv[], char **PATH_arr, char *lineptr, char
 	if (cpid == 0)
 	{
 		execve(command_path, argv, environ);
+		perror(av[0]);   /* execve() only returns on error */
 
 		free(lineptr);
 		free(argv);
+		free(PATH_arr[0] - 5);
 		free(PATH_arr);
-		perror(av[0]);   /* execve() only returns on error */
 		if (free_command_path == 1)
 			free(command_path);
 		exit(EXIT_FAILURE);
@@ -44,7 +44,7 @@ void call_command(char *av[], char *argv[], char **PATH_arr, char *lineptr, char
 	}
 	else
 	{
-		wait(&status);
+		wait(status);
 		if (free_command_path == 1)
 			free(command_path);
 		free(argv);

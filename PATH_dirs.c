@@ -7,16 +7,18 @@
  * Return: array of paths.
  */
 
-char **PATH_dirs(void)
+char **PATH_dirs(char **environ)
 {
 	char *PATHS = NULL; /*PATH1:PATH2:...*/
 	char *IND_PATH = NULL; /*PATH1*/
+	char *strtok_ptr = NULL;
 	char **PATH_arr = NULL;
 	int size_ptr = sizeof(char *), i = 2;
 
-	PATHS = _getenv("PATH");
+	PATHS = _getenv("PATH", environ);
+	strtok_ptr = PATHS;
 
-	IND_PATH = strtok(PATHS, ":");
+	IND_PATH = strtok(strtok_ptr, ":");
 
 	PATH_arr = malloc(size_ptr * 2);
 	/*if malloc == -1*/
@@ -30,6 +32,5 @@ char **PATH_dirs(void)
 		i++;
 	}
 		PATH_arr[i - 1] = NULL;
-
 	return (PATH_arr);
 }
