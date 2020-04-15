@@ -7,8 +7,8 @@
 
 void print_prompt(void)
 {
-    if (isatty(0))
-    {
-        write(1, "#cisfun$ ", 9);
-    }
+	if (isatty(0))
+	{
+		write(1, "#cisfun$ ", 9);
+	}
 }
