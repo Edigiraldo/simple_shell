@@ -22,5 +22,6 @@ int _strlen(char *str);
 int _atoi(char *s);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *_getenv(const char *name);
+void print_prompt(void);
 
 #endif
