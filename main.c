@@ -38,7 +38,10 @@ int main(int ac, char *av[])
 		lineptr = NULL;
 		n = 0;
 	}
-	write(1, "\n", 1);
+	if (isatty(0))
+	{
+		write(1, "\n", 1);
+	}
 	free(lineptr);
 	free(PATH_arr);
 	exit(EXIT_FAILURE);
