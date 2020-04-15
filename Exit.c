@@ -8,18 +8,18 @@
  * @PATH_arr: pointer for free.
  */
 
-void Exit(char *lineptr, char **argv, char **PATH_arr)
+void Exit(char *lineptr, char **argv, char **PATH_arr, __attribute__((unused)) char **environ)
 {
 	int i = 1, num = 0;
 
 	if (argv[1] != NULL && argv[2] != NULL)
 	{
-		fprintf(stderr, "-hsh: exit: too many arguments\n");
+		write(2, "-hsh: exit: too many arguments\n", _strlen("-hsh: exit: too many arguments\n"));
 		return;
 	}
 	free(PATH_arr);
 	if (argv[1] != NULL)
-	{       num = atoi(argv[1]);
+	{       num = _atoi(argv[1]);
 		if (num != 0)
 		{       free(argv), free(lineptr);
 			exit(num);
@@ -37,13 +37,13 @@ void Exit(char *lineptr, char **argv, char **PATH_arr)
 				exit(0);
 			}
 			else
-			{fprintf(stderr, "-hsh: exit: %s: numeric argument required\n", argv[1]);
+			{write(2, "-hsh: exit: %s: numeric argument required\n", _strlen("-hsh: exit: %s: numeric argument required\n"));
 				free(argv), free(lineptr);
 				exit(0);
 			}
 		}
 		else
-		{fprintf(stderr, "-hsh: exit: %s: numeric argument required\n", argv[1]);
+		{write(2, "-hsh: exit: %s: numeric argument required\n", _strlen("-hsh: exit: %s: numeric argument required\n"));
 			free(argv), free(lineptr);
 			exit(0);
 		}

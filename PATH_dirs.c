@@ -14,7 +14,7 @@ char **PATH_dirs(void)
 	char **PATH_arr = NULL;
 	int size_ptr = sizeof(char *), i = 2;
 
-	PATHS = getenv("PATH");
+	PATHS = _getenv("PATH");
 
 	IND_PATH = strtok(PATHS, ":");
 
@@ -24,7 +24,7 @@ char **PATH_dirs(void)
 	IND_PATH = strtok(NULL, ":");
 	while (IND_PATH != NULL)
 	{
-		PATH_arr = realloc(PATH_arr, (i + 1) * size_ptr);
+		PATH_arr = _realloc(PATH_arr, i * size_ptr, (i + 1) * size_ptr);
 		PATH_arr[i - 1] = IND_PATH;
 		IND_PATH = strtok(NULL, ":");
 		i++;

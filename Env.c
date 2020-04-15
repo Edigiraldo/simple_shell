@@ -8,14 +8,18 @@
  * @PATH_arr: pointer for free.
  */
 
-void Env(char *lineptr, char **argv, char **PATH_arr)
+void Env(char *lineptr, char **argv, char **PATH_arr, char **environ)
 {
-	extern char **environ;
 	int i = 0;
 	(void) lineptr;
 	(void) argv;
 	(void) PATH_arr;
 
 	while (environ[i] != NULL)
-		printf("%s\n", environ[i++]);
+	{
+		write(1, environ[i], _strlen(environ[i]));
+		write(1, "\n", 1);
+		i++;
+	}
 }
+/* ssize_t write(int fd, const void *buf, size_t count) */
