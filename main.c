@@ -21,7 +21,7 @@ int main(int ac, char *av[])
 
 	PATH_arr = PATH_dirs();
 	print_prompt();
-	while (getline(&lineptr, &n, stdin) != -1)
+	while ((getline(&lineptr, &n, stdin)) > 0)
 	{
 		argv = split_arguments(lineptr);
 
@@ -44,7 +44,6 @@ int main(int ac, char *av[])
 	}
 	free(lineptr);
 	free(PATH_arr);
-	exit(EXIT_FAILURE);
 
 	return (0);
 }
