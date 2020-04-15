@@ -50,6 +50,6 @@ void call_command(char *av[], char *argv[], char **PATH_arr, char *lineptr, char
 		free(argv);
 		/*free(PATH_arr);*/
 		free(lineptr);
-		printf("#cisfun$ ");
+		print_prompt();
 	}
 }

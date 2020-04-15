@@ -20,7 +20,7 @@ int main(int ac, char *av[])
 	(void)av;
 
 	PATH_arr = PATH_dirs();
-	printf("#cisfun$ ");
+	print_prompt();
 	while (getline(&lineptr, &n, stdin) != -1)
 	{
 		argv = split_arguments(lineptr);
@@ -31,14 +31,17 @@ int main(int ac, char *av[])
 			free(lineptr);
 			lineptr = NULL;
 			n = 0;
-			printf("#cisfun$ ");
+			print_prompt();
 			continue;
 		}
 		call_command(av, argv, PATH_arr, lineptr, environ);
 		lineptr = NULL;
 		n = 0;
 	}
-	write(1, "\n", 1);
+	if (isatty(0))
+	{
+		write(1, "\n", 1);
+	}
 	free(lineptr);
 	free(PATH_arr);
 	exit(EXIT_FAILURE);
