@@ -18,5 +18,6 @@ void Exit(char *lineptr, char **argv, char **PATH_arr);
 void Env(char *lineptr, char **argv, char **PATH_arr);
 int look_for_built_in(char *lineptr, char **argv, char **PATH_arr);
 int main(int ac, char *av[]);
+void print_prompt(void);
 
 #endif
