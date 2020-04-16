@@ -9,11 +9,12 @@
  * @lineptr: command inserted for user.
  */
 
-void call_command(char *av[], char *argv[], char **PATH_arr, char *lineptr, char **environ, int *status)
+void call_command(char *av[], char *argv[], char **PATH_arr, char *lineptr, char **environ, int *statu)
 {
 	pid_t cpid = 0;
 	char *command_path = NULL;
 	int free_command_path = 0;
+	int status;
 
 	command_path = look_for_path(argv[0], PATH_arr);
 	if (command_path != NULL)
@@ -26,8 +27,8 @@ void call_command(char *av[], char *argv[], char **PATH_arr, char *lineptr, char
 	cpid = fork();
 	if (cpid == 0)
 	{
-		execve(command_path, argv, environ);
-		perror(av[0]);   /* execve() only returns on error */
+		if (execve(command_path, argv, environ) == -1)
+			perror(av[0]);   /* execve() only returns on error */
 
 		free(lineptr);
 		free(argv);
@@ -35,16 +36,17 @@ void call_command(char *av[], char *argv[], char **PATH_arr, char *lineptr, char
 		free(PATH_arr);
 		if (free_command_path == 1)
 			free(command_path);
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
-	else if (cpid == -1)
+	if (cpid > 0)
 	{
-		perror("fork");
-		exit(EXIT_FAILURE);
-	}
-	else
-	{
-		wait(status);
+		wait(&status);
+		if (WIFEXITED(status))
+		{
+			*statu = WEXITSTATUS(status);
+			if (*statu == 0)
+				*statu = 127;
+		}
 		if (free_command_path == 1)
 			free(command_path);
 		free(argv);
