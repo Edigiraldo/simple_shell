@@ -20,9 +20,14 @@ void Exit(char *lineptr, char **argv, char **PATH_arr, __attribute__((unused)) c
 	free(PATH_arr[0] - 5), free(PATH_arr);
 	if (argv[1] != NULL)
 	{       num = _atoi(argv[1]);
-		if (num != 0)
+		if (num > 0)
 		{       free(argv), free(lineptr);
 			exit(num);
+		}
+		else if (num < 0)
+		{       free(argv), free(lineptr);
+			write(2, "sh: 1: exit: Illegal number: %s\n", _strlen("sh: 1: exit: Illegal number: %s\n"));
+			exit (2);
 		}
 		else if (argv[1][0] == '0')
 		{
@@ -39,13 +44,13 @@ void Exit(char *lineptr, char **argv, char **PATH_arr, __attribute__((unused)) c
 			else
 			{write(2, "-hsh: exit: %s: numeric argument required\n", _strlen("-hsh: exit: %s: numeric argument required\n"));
 				free(argv), free(lineptr);
-				exit(0);
+				exit(128);
 			}
 		}
 		else
 		{write(2, "-hsh: exit: %s: numeric argument required\n", _strlen("-hsh: exit: %s: numeric argument required\n"));
 			free(argv), free(lineptr);
-			exit(0);
+			exit(128);
 		}
 	}
 	else
