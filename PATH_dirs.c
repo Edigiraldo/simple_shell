@@ -16,6 +16,12 @@ char **PATH_dirs(char **environ)
 	int size_ptr = sizeof(char *), i = 2;
 
 	PATHS = _getenv("PATH", environ);
+	if (PATHS == NULL)
+	{
+		PATHS = strings_concat("PATH=", _PATH_STDPATH);
+		PATHS += 5;
+	}
+
 	strtok_ptr = PATHS;
 
 	IND_PATH = strtok(strtok_ptr, ":");
@@ -32,5 +38,6 @@ char **PATH_dirs(char **environ)
 		i++;
 	}
 		PATH_arr[i - 1] = NULL;
+
 	return (PATH_arr);
 }

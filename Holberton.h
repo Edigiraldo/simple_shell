@@ -8,6 +8,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include "/usr/include/paths.h"
 
 char **PATH_dirs(char **environ);
 char *strings_concat(char *PATH, char *command);
