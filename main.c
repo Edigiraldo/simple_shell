@@ -42,12 +42,10 @@ int main(int ac, char *av[])
 	if (isatty(0))
 	{
 		write(1, "\n", 1);
+		status = 0;
 	}
 	free(lineptr);
 	free(PATH_arr[0] - 5);
 	free(PATH_arr);
-	if (isatty(0))
-		status = 0;
-	exit(status);
-	return (0);
+	return (status);
 }
