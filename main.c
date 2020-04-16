@@ -46,7 +46,8 @@ int main(int ac, char *av[])
 	free(lineptr);
 	free(PATH_arr[0] - 5);
 	free(PATH_arr);
-
+	if (isatty(0))
+		status = 0;
 	exit(status);
 	return (0);
 }
