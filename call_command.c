@@ -44,8 +44,6 @@ void call_command(char *av[], char *argv[], char **PATH_arr, char *lineptr, char
 		if (WIFEXITED(status))
 		{
 			*statu = WEXITSTATUS(status);
-			if (*statu == 0)
-				*statu = 127;
 		}
 		if (free_command_path == 1)
 			free(command_path);
