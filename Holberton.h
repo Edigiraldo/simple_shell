@@ -25,5 +25,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *_getenv(const char *name, char **);
 void print_prompt(void);
 char *_strdup(char *str);
+void print_error(char *message, int *parameter, char *message2);
+char *int_str(int n);
 
 #endif
