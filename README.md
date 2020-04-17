@@ -5,28 +5,28 @@ It is known as Command Line Interpreter, program that accepts commands from the 
 
 ![](https://raw.githubusercontent.com/Edigi12Hbtn/simple_shell/master/Shell.png)
 
-####Clone Repository with HTTPS
+#### Clone Repository with HTTPS
 
 Use Git or checkout with SVN using the web URL.
 ```
 git clone https://github.com/Edigi12Hbtn/simple_shell.git
 ```
-####Requeriments
+#### Requeriments
 * All files will be compiled on Ubuntu 14.04 LTS
 * The C programs and functions will be compiled with gcc 4.8.4 
 
-####Compile (Install)
+#### Compile (Install)
 
 ```
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
 
-####Syntax
+#### Syntax
 ```
 #cisfun$ command [-flag or -option] [arguments,  files or  directories]
 ```
 
-###How to use
+### How to use
 shell should work like this in interactive mode:
 ```
 $ ./hsh
@@ -44,7 +44,7 @@ $ echo "/bin/ls" | ./hsh
 #cisfun$
 ```
 
-###Files and Functions
+### Files and Functions
 
 | Name  | Description |
 | ------------- | ------------- |
