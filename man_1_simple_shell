@@ -1,39 +1,60 @@
-.\" Manpage for simple_shell.
-.TH SIMPLE_SHELL 3 "14 April 2020" "1.0" "simple_shell man page"
+.\" Manpage for Simple Shell.
+.TH SIMPLE_SHELL 1 "16 April 2020" "1.0" "Simple Shell man page"
 .SH NAME
-simple_shell - format and print data
+hsh - command interpreter (Shell)
+
 .SH SYNOPSIS
-.B printf FORMAT [ARGUMENT]...
+.B hsh  [command_string | options or flags | file or argument]
+
 .SH DESCRIPTION
-.B simple_shell is a function to do formatted printing. This function allows for printing numbers and other things stored in variables.
-.B simple_shell takes one argument:a string of characters to be printed. This string is composed of characters, each of which is printed exactly as it appears.
+
+.B The hsh utility is a command language interpreter that shall execute commands read from a command line string, the standard input, or a specified file.
+.B It is known as Command Line Interpreter, program that accepts commands from the keyboard and then executes either by itself or by passing it on to the operating system.
+
+.SH SYNTAX
+
+.B hsh [command] [−o option]...[+o option]...[command_file [argument...]]
+
 .SH EXAMPLE
-The real power of printf is when we are printing the contents of variables. Let’s take the format specifier %d for example. This prints a number. So, a number must be provided for printing. This is done by adding another argument to the printf statement,
-as shown here.
+.PP
+.B shell should work like this in interactive mode:
 
-    simple_shell ( "I am %d years old\n", age );
+.RS 3
+$ ./hsh
+.br
+#cisfun$ echo "Hello World"
+.br
+Hello World
+.br
+#cisfun$
+.RE
 
-In this example, printf has two arguments. The first is a string: "I am %d years old\n". The second is an integer, age.
+.B But also in non-interactive mode:
 
-.B The conversion specifiers
+.RS 3
+$ echo "/bin/ls" | ./hsh
+.br
+File1   File2   File3
+.RE
 
-.IP %c
-- print a single character.
-.IP %s
-- print a string of characters.
-.IP %%
-- prints percentage symbol.
-.IP %d
-- prints decimal.
-.IP %i
-- print an integer in base 10.
+.SH RESERVED WORDS
+.B exit:
+End the program, exit the shell.
+
+.B env:
+Displays the enviroment variables.
 
 .SH SEE ALSO
-.I printf (3)
+.I sh (1)
+.I bash (1)
+.I ksh(1)
+.I csh(1)
 .SH BUGS
 No known bugs.
-.SH "AUTHORS"
-.SH ""
 
-Edison Giraldo Aristizabal and Sergio Steben Arias Quintero
+.SH AUTHORS
+    Edison Giraldo Aristizabal (1470@holbertonschool.com - https://github.com/Edigi12Hbtn)
+
+    Sergio Steben Arias Quintero (1638@holbertonschool.com - https://github.com/sarias12)
+
 
