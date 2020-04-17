@@ -38,10 +38,8 @@ $ ./hsh
 
 But also in non-interactive mode:
 ```
-$ echo "/bin/ls" | ./hsh
-#cisfun$ echo "Hello World"
+$ echo "Hello World" | ./hsh
 "Hello World"
-#cisfun$
 ```
 
 ### Files and Functions
