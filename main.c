@@ -26,7 +26,7 @@ int main(int ac, char *av[])
 	{
 		argv = split_arguments(lineptr);
 
-		if (argv[0] == NULL || look_for_built_in(lineptr, argv, PATH_arr, environ) == 1)
+		if (argv[0] == NULL || look_for_built_in(lineptr, argv, PATH_arr, environ, &status) == 1)
 		{
 			free(argv);
 			free(lineptr);
@@ -42,7 +42,7 @@ int main(int ac, char *av[])
 	if (isatty(0))
 	{
 		write(1, "\n", 1);
-		status = 0;
+		/*status = 0;*/
 	}
 	free(lineptr);
 	free(PATH_arr[0] - 5);

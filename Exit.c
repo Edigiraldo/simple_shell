@@ -8,7 +8,7 @@
  * @PATH_arr: pointer for free.
  */
 
-void Exit(char *lineptr, char **argv, char **PATH_arr, __attribute__((unused)) char **environ)
+void Exit(char *lineptr, char **argv, char **PATH_arr, __attribute__((unused)) char **environ, int *status)
 {
 	int i = 1, num = 0;
 
@@ -54,5 +54,5 @@ void Exit(char *lineptr, char **argv, char **PATH_arr, __attribute__((unused)) c
 		}
 	}
 	else
-		free(argv), free(lineptr), exit(0);
+		free(argv), free(lineptr), exit(*status);
 }

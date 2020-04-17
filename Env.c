@@ -8,12 +8,13 @@
  * @PATH_arr: pointer for free.
  */
 
-void Env(char *lineptr, char **argv, char **PATH_arr, char **environ)
+void Env(char *lineptr, char **argv, char **PATH_arr, char **environ, int *status)
 {
 	int i = 0;
 	(void) lineptr;
 	(void) argv;
 	(void) PATH_arr;
+	(void) status; 
 
 	while (environ[i] != NULL)
 	{
