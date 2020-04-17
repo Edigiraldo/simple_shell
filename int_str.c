@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "Holberton.h"
 
 /**
  * int_str - converts int to string
@@ -8,11 +7,23 @@
  * Return: string of numbers
  */
 
-char *int_str(unsigned int n)
+char *int_str(int n)
 {
 	char *str;
-	unsigned int i = 0;
-	unsigned int num = n;
+	int i = 0;
+	int num = n;
+	int negative = 0;
+
+	if (num < 0)
+	{
+		n *= -1;
+		num = n;
+		i++;
+		negative = 1;
+	}
+
+	if (num == 0)
+		i++;
 
 	while (num > 0)
 	{
@@ -32,12 +43,9 @@ char *int_str(unsigned int n)
 		n /= 10;
 		i--;
 	}
+
+	if (negative == 1)
+		str[0] = '-';
+
 	return (str);
-}
-
-int main(void)
-{
-	printf("%s\n", int_str(105));
-
-	return (0);
 }
