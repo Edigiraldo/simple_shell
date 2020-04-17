@@ -38,7 +38,7 @@ void call_command(char *av[], char *argv[], char **PATH_arr, char *lineptr, char
 
 		print_error(av[0], NULL, ": ");
 		print_error(NULL, &int_str, ": ");
-		print_error(argv[0], NULL, ": notfound\n");		
+		print_error(argv[0], NULL, ": not found\n");		
 		/*perror(av[0]);*/
 
 		if (free_command_path == 1)
