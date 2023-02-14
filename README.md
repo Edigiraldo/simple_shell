@@ -9,7 +9,7 @@ It is known as Command Line Interpreter, program that accepts commands from the 
 
 Use Git or checkout with SVN using the web URL.
 ```
-git clone https://github.com/Edigi12Hbtn/simple_shell.git
+git clone https://github.com/Edigiraldo/simple_shell.git
 ```
 #### Requeriments
 * All files will be compiled on Ubuntu 14.04 LTS
